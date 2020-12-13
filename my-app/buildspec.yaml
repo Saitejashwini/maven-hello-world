@@ -1,0 +1,18 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto8
+  build:
+    commands:
+      - echo Build started on `date`
+      - mvn test -f my-app/pom.xml
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - mvn package -f my-app/pom.xml
+artifacts:
+  files:
+    - my-app/target/my-app-1.0-SNAPSHOT.jar
+  discard-paths: yes
